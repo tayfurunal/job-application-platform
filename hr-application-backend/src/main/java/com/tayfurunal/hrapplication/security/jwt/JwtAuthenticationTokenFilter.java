@@ -1,6 +1,6 @@
 package com.tayfurunal.hrapplication.security.jwt;
 
-import com.tayfurunal.codefriends.security.service.UserDetailsServiceImpl;
+import com.tayfurunal.hrapplication.security.service.UserDetailsServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
