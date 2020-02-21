@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -38,14 +39,20 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/job")
 public class JobController {
-    @Autowired
+    final
     UserRepository userRepository;
 
-    @Autowired
+    final
     JobRepository jobRepository;
 
-    @Autowired
+    final
     JobServiceImpl jobService;
+
+    public JobController(UserRepository userRepository, JobRepository jobRepository, JobServiceImpl jobService) {
+        this.userRepository = userRepository;
+        this.jobRepository = jobRepository;
+        this.jobService = jobService;
+    }
 
     @PostMapping("")
     @PreAuthorize("hasRole('HR')")
@@ -61,12 +68,18 @@ public class JobController {
         return new ResponseEntity<Job>(job, HttpStatus.OK);
     }
 
+    @GetMapping("/all")
+    @PreAuthorize("hasRole('HR')")
+    public ResponseEntity<List<Job>> getJobs() {
+        List<Job> jobs = jobService.getJobs();
+        return ResponseEntity.ok(jobs);
+    }
+
     @DeleteMapping("/{jobId}")
     @PreAuthorize("hasRole('HR')")
     public ResponseEntity<Boolean> deleteJobById(@PathVariable(value = "jobId", required = true) Long jobId) {
         return ResponseEntity.ok(jobService.deleteJobById(jobId));
     }
-
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)

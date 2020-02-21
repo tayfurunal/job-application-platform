@@ -6,6 +6,8 @@ import com.tayfurunal.hrapplication.service.JobService;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JobServiceImpl implements JobService {
 
@@ -29,6 +31,12 @@ public class JobServiceImpl implements JobService {
             return job;
         else
             throw new IllegalArgumentException("Job not found!");
+    }
+
+    @Override
+    public List<Job> getJobs() {
+        List<Job> jobs = jobRepository.findAll();
+        return jobs;
     }
 
     @Override

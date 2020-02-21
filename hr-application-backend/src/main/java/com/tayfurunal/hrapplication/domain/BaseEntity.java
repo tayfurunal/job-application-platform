@@ -18,8 +18,4 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "created_at")
     private Date createdAt = new Date();
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at")
-    private Date updatedAt;
-
 }
