@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getJobs } from '../actions/jobActions';
 import ProjectItemHR from './Project/ProjectItemHR';
-import CreateProjectButton from './Project/CreateProjectButton';
+import CreateJobButton from './CreateJobButton';
 
 class ManagerPanel extends Component {
   componentDidMount() {
@@ -27,7 +27,7 @@ class ManagerPanel extends Component {
             <div className='col-md-12'>
               <h1 className='display-4 text-center'>Jobs</h1>
               <br />
-              <CreateProjectButton />
+              <CreateJobButton />
               <br />
               <hr />
               {jobs.map(job => (
