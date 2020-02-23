@@ -51,6 +51,8 @@ public class Application extends BaseEntity {
 
     String thoughtsOnJob;
 
+    String resumeUrl;
+
     //Resume
 
     @OneToOne(fetch = FetchType.EAGER)

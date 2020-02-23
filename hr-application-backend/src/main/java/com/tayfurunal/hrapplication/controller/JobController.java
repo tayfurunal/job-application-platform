@@ -2,12 +2,9 @@ package com.tayfurunal.hrapplication.controller;
 
 import com.tayfurunal.hrapplication.advice.ApiError;
 import com.tayfurunal.hrapplication.domain.Job;
-import com.tayfurunal.hrapplication.repository.JobRepository;
-import com.tayfurunal.hrapplication.repository.UserRepository;
 import com.tayfurunal.hrapplication.service.impl.JobServiceImpl;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,11 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -39,37 +34,30 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/job")
 public class JobController {
-    final
-    UserRepository userRepository;
-
-    final
-    JobRepository jobRepository;
 
     final
     JobServiceImpl jobService;
 
-    public JobController(UserRepository userRepository, JobRepository jobRepository, JobServiceImpl jobService) {
-        this.userRepository = userRepository;
-        this.jobRepository = jobRepository;
+    public JobController(JobServiceImpl jobService) {
         this.jobService = jobService;
     }
 
     @PostMapping("")
     @PreAuthorize("hasRole('HR')")
-    public ResponseEntity<?> createProject(@Valid @RequestBody Job job) {
+    public ResponseEntity<?> createJob(@Valid @RequestBody Job job) {
         Job newPost = jobService.createJob(job);
         return new ResponseEntity<Job>(newPost, HttpStatus.CREATED);
     }
 
     @GetMapping("/{jobId}")
-    @PreAuthorize("hasRole('HR')")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<?> getJobById(@PathVariable(value = "jobId", required = true) Long jobId) {
         Job job = jobService.getJobById(jobId);
         return new ResponseEntity<Job>(job, HttpStatus.OK);
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('HR')")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<List<Job>> getJobs() {
         List<Job> jobs = jobService.getJobs();
         return ResponseEntity.ok(jobs);

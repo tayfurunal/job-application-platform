@@ -1,5 +1,7 @@
-package com.tayfurunal.hrapplication.helper;
+package com.tayfurunal.hrapplication.advice;
 
+
+import com.tayfurunal.hrapplication.advice.ApiError;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -13,8 +15,11 @@ import java.util.Map;
 @RestController
 public class ErrorHandler implements ErrorController {
 
-    @Autowired
-    private ErrorAttributes errorAttributes;
+    private final ErrorAttributes errorAttributes;
+
+    public ErrorHandler(ErrorAttributes errorAttributes) {
+        this.errorAttributes = errorAttributes;
+    }
 
     @RequestMapping("/error")
     ApiError handleError(WebRequest webRequest) {

@@ -62,8 +62,9 @@ public class User extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-/*    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "user", orphanRemoval = true)
-    private List<Post> posts = new ArrayList<>();*/
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinTable
+    private List<Application> applications = new ArrayList<>();
 
 
     public User(String username, String email, String password) {

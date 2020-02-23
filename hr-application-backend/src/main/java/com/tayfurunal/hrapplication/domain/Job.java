@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
@@ -33,8 +34,12 @@ public class Job extends BaseEntity {
     @NotBlank(message = "Description cannot be blank")
     private String jobDescription;
 
+    @NotBlank(message = "Summary cannot be blank")
+    private String jobDescriptionSummary;
+
     private Integer numberOfApplication = 0;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
+    @Future(message = "Last Application Date must be in the future")
     private Date lastApplication;
 }
