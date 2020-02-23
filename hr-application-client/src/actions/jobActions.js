@@ -12,7 +12,7 @@ export const createJob = (job, history) => async dispatch => {
   } catch (error) {
     dispatch({
       type: GET_ERRORS,
-      payload: error.response.data.validationErrors
+      payload: error.response.data.validationErrors || error.response.data
     });
   }
 };
