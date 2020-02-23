@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getJobs } from '../../../actions/jobActions';
-import ProjectItem from '../ProjectItem';
+import { getJobs } from '../../actions/jobActions';
+import JobItem from '../JobItem';
 
 class Landing extends Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class Landing extends Component {
               <h1 className='display-4 text-center'>Available Jobs</h1>
               <hr />
               {jobs.map(job => (
-                <ProjectItem key={job.id} job={job} />
+                <JobItem key={job.id} job={job} />
               ))}
             </div>
           </div>

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Backlog from './Backlog';
-import { getBacklog } from '../../actions/backlogActions';
+import { getApplication } from '../actions/applicationActions';
 import { getJob } from '../../src/actions/jobActions';
 
 class Application extends Component {
@@ -17,7 +16,7 @@ class Application extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.getBacklog(id);
+    this.props.getApplication(id);
     this.props.getJob(id, this.props.history);
   }
 
@@ -29,9 +28,10 @@ class Application extends Component {
 
   render() {
     const { id } = this.props.match.params;
-    const { project_tasks } = this.props.backlog;
+    const { getApplication } = this.props.application;
     const { errors } = this.state;
-    const job = this.props.project.project;
+    const job = this.props.job.job;
+    console.log(job);
     return (
       <div className='container'>
         <br />
@@ -54,16 +54,18 @@ class Application extends Component {
 }
 
 Application.propTypes = {
-  backlog: PropTypes.object.isRequired,
-  getBacklog: PropTypes.func.isRequired,
+  application: PropTypes.object.isRequired,
+  getApplication: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  project: PropTypes.object.isRequired
+  job: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  backlog: state.backlog,
+  application: state.application,
   errors: state.errors,
-  project: state.project
+  job: state.job
 });
 
-export default connect(mapStateToProps, { getBacklog, getJob })(Application);
+export default connect(mapStateToProps, { getApplication, getJob })(
+  Application
+);

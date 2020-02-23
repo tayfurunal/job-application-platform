@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteJob } from '../../src/actions/jobActions';
+import { deleteJob } from '../actions/jobActions';
 
 class ProjectItem extends Component {
   onDeleteClick = id => {
@@ -46,7 +46,7 @@ class ProjectItem extends Component {
 }
 
 ProjectItem.propTypes = {
-  deleteProject: PropTypes.func.isRequired
+  deleteJob: PropTypes.func.isRequired
 };
 
-export default connect(null, { deleteProject })(ProjectItem);
+export default connect(null, { deleteJob })(ProjectItem);

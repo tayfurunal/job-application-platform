@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createNewUser } from '../../../actions/securityActions';
+import { createNewUser } from '../../actions/securityActions';
 
 class Register extends Component {
   constructor() {
@@ -29,7 +29,8 @@ class Register extends Component {
 
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: {}
     });
   };
 
@@ -46,7 +47,7 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
-    console.log(errors);
+
     return (
       <div>
         <div className='register'>
@@ -57,7 +58,11 @@ class Register extends Component {
                 <p className='lead text-center'>Create your Account</p>
                 <form onSubmit={this.onSubmit}>
                   <div className='form-group'>
-                    {errors.message && <h5>{errors.message}</h5>}
+                    {errors.message && (
+                      <div class='alert alert-danger' role='alert'>
+                        {errors.message}
+                      </div>
+                    )}
                     <input
                       type='email'
                       className={

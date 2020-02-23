@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import errorReducer from './errorReducer';
 import jobReducer from './jobReducer';
-import backlogReducer from './backlogReducer';
+import applicationReducer from './applicationReducer';
 import securityReducer from './securityReducer';
 
 export default combineReducers({
   errors: errorReducer,
   job: jobReducer,
-  backlog: backlogReducer,
+  application: applicationReducer,
   security: securityReducer
 });

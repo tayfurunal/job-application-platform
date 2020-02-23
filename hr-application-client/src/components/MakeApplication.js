@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addProjectTask } from '../../../actions/backlogActions';
+import { addApplication } from '../actions/applicationActions';
 
 class MakeApplication extends Component {
   constructor(props) {
@@ -50,17 +50,19 @@ class MakeApplication extends Component {
       thoughtsOnJob: this.state.thoughtsOnJob
     };
 
-    this.props.addProjectTask(
-      this.state.projectIdentifier,
-      newTask,
-      this.props.history
-    );
+    this.props
+      .addApplication(this.state.projectIdentifier, newTask, this.props.history)
+      .then(response => {
+        if (!this.state.errors) {
+          console.log('tayfur');
+        }
+      });
   };
 
   render() {
     const { id } = this.props.match.params;
     const { errors } = this.state;
-
+    console.log();
     return (
       <div className='add-PBI'>
         <div className='container'>
@@ -75,7 +77,7 @@ class MakeApplication extends Component {
                   <input
                     type='text'
                     className={
-                      errors.summary
+                      errors.name
                         ? 'form-control form-control-lg is-invalid'
                         : 'form-control form-control-lg'
                     }
@@ -141,7 +143,7 @@ class MakeApplication extends Component {
 }
 
 MakeApplication.propTypes = {
-  addProjectTask: PropTypes.func.isRequired,
+  addApplication: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   security: PropTypes.object.isRequired
 };
@@ -151,4 +153,4 @@ const mapStateToProps = state => ({
   security: state.security
 });
 
-export default connect(mapStateToProps, { addProjectTask })(MakeApplication);
+export default connect(mapStateToProps, { addApplication })(MakeApplication);

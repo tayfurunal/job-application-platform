@@ -1,36 +1,23 @@
-import {
-  GET_BACKLOG,
-  GET_PROJECT_TASK,
-  DELETE_PROJECT_TASK
-} from '../actions/types';
+import { GET_APPLICATION, GET_APPLICATIONS } from '../actions/types';
 
 const initialState = {
-  project_tasks: [],
-  project_task: {}
+  applications: [],
+  application: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_BACKLOG:
+    case GET_APPLICATIONS:
       return {
         ...state,
-        project_tasks: action.payload
+        applications: action.payload
       };
 
-    case GET_PROJECT_TASK:
+    case GET_APPLICATION:
       return {
         ...state,
-        project_task: action.payload
+        application: action.payload
       };
-
-    case DELETE_PROJECT_TASK:
-      return {
-        ...state,
-        project_tasks: state.project_tasks.filter(
-          project_task => project_task.projectSequence !== action.payload
-        )
-      };
-
     default:
       return state;
   }
