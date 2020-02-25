@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +44,13 @@ public class ApplicationController {
                                            @Valid @RequestBody Application application, Principal principal) {
         Application newApplication = applicationService.makeApplication(application,jobId, principal.getName());
         return new ResponseEntity<Application>(newApplication, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{username}")
+    @PreAuthorize("hasRole('APPLICANT')")
+    public ResponseEntity<?> getApplicationsByUsername(@PathVariable(value = "username",required = true) String username){
+        List<Application> applications = applicationService.getApplicationsByUsername(username);
+        return ResponseEntity.ok(applications);
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
