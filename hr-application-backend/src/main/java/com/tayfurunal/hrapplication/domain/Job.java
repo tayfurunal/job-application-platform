@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
@@ -39,7 +39,9 @@ public class Job extends BaseEntity {
 
     private Integer numberOfApplication = 0;
 
+    private Integer isClosed = 0;
+
     @JsonFormat(pattern = "yyyy-mm-dd")
-    @Future(message = "Last Application Date must be in the future")
+    @FutureOrPresent(message = "Last Application Date must be in the future")   
     private Date lastApplication;
 }

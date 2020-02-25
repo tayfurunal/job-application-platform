@@ -45,13 +45,13 @@ public class User extends BaseEntity {
     @Column(unique = true)
     private String username;
 
-    @NotBlank
+    @NotBlank(message = "Email cannot be blank")
     @Size(max = 70)
     @Email
     @Column(unique = true)
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Password cannot be blank")
     @Size(max = 120)
     private String password;
 
@@ -62,7 +62,7 @@ public class User extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinTable
     private List<Application> applications = new ArrayList<>();
 

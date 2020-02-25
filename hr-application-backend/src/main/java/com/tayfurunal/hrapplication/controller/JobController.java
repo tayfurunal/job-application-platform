@@ -4,7 +4,6 @@ import com.tayfurunal.hrapplication.advice.ApiError;
 import com.tayfurunal.hrapplication.domain.Job;
 import com.tayfurunal.hrapplication.service.impl.JobServiceImpl;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,7 +51,7 @@ public class JobController {
     @PreAuthorize("permitAll()")
     public ResponseEntity<?> getJobById(@PathVariable(value = "jobId", required = true) Long jobId) {
         Job job = jobService.getJobById(jobId);
-        return new ResponseEntity<Job>(job, HttpStatus.OK);
+        return new ResponseEntity<Job>(job, HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
@@ -63,9 +61,9 @@ public class JobController {
         return ResponseEntity.ok(jobs);
     }
 
-    @DeleteMapping("/{jobId}")
+    @PostMapping("/{jobId}")
     @PreAuthorize("hasRole('HR')")
-    public ResponseEntity<Boolean> deleteJobById(@PathVariable(value = "jobId", required = true) Long jobId) {
+    public ResponseEntity<?> deleteJobById(@PathVariable(value = "jobId", required = true) Long jobId) {
         return ResponseEntity.ok(jobService.deleteJobById(jobId));
     }
 
