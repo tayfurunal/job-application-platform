@@ -11,5 +11,5 @@ public interface JobService {
 
     List<Job> getJobs();
 
-    Boolean deleteJobById(Long id);
+    Job deleteJobById(Long id);
 }
