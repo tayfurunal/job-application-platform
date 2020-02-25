@@ -39,4 +39,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setJob(job);
         return applicationRepository.save(application);
     }
+
+    @Override
+    public List<Application> getApplicationsByUsername(String username) {
+        List<Application> applications = applicationRepository.findAllByUserUsername(username);
+        return applications;
+    }
 }
