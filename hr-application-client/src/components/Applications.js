@@ -12,22 +12,29 @@ class MyApplication extends Component {
   }
 
   getApplications = async () => {
-    let applications = await axios.get(
-      `/api/application/${this.props.security.user.sub}`
-    );
+    let applications = await axios.get(`/api/application/all`);
     this.setState({
       applications: applications.data
     });
   };
 
   componentDidMount() {
+    if (
+      !this.props.security.validToken ||
+      !this.props.security.roles[0].includes('ROLE_HR')
+    ) {
+      this.props.history.push('/');
+    } else {
+      this.props.getJobs();
+    }
+
     this.getApplications();
   }
 
   render() {
     return (
       <div className='container'>
-        <h1 className='text-center'>My Applications</h1>
+        <h1 className='text-center'>Applications</h1>
         {this.state.applications.length === 0 ? (
           <div
             class='alert alert-danger text-center'
@@ -45,17 +52,22 @@ class MyApplication extends Component {
                 <th scope='col'>Name</th>
                 <th scope='col'>Email</th>
                 <th scope='col'>Resume</th>
+                <th scope='col'>Details</th>
               </tr>
             </thead>
             <tbody>
               {this.state.applications.map((listValue, index) => {
                 return (
-                  <tr key={index}>
-                    <td>{listValue.id}</td>
-                    <td>{listValue.job.jobTitle}</td>
-                    <td>{listValue.name}</td>
-                    <td>{listValue.email}</td>
-                  </tr>
+                  <>
+                    <tr key={index}>
+                      <td>{listValue.id}</td>
+                      <td>{listValue.job.jobTitle}</td>
+                      <td>{listValue.name}</td>
+                      <td>{listValue.email}</td>
+                      <td>{listValue.resumeUrl}</td>
+                      <button className='btn btn-primary'>Go</button>
+                    </tr>
+                  </>
                 );
               })}
             </tbody>
