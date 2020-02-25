@@ -10,6 +10,7 @@ class AddJob extends Component {
     this.state = {
       jobTitle: '',
       jobDescription: '',
+      jobDescriptionSummary: '',
       lastApplication: '',
       errors: {}
     };
@@ -39,6 +40,7 @@ class AddJob extends Component {
     const newJob = {
       jobTitle: this.state.jobTitle,
       jobDescription: this.state.jobDescription,
+      jobDescriptionSummary: this.state.jobDescriptionSummary,
       lastApplication: this.state.lastApplication
     };
 
@@ -71,6 +73,25 @@ class AddJob extends Component {
                   />
                   {errors.jobTitle && (
                     <div className='invalid-feedback'>{errors.jobTitle}</div>
+                  )}
+                </div>
+                <div className='form-group'>
+                  <input
+                    type='text'
+                    className={
+                      errors.jobDescriptionSummary
+                        ? 'form-control form-control-lg is-invalid'
+                        : 'form-control form-control-lg'
+                    }
+                    placeholder='Job Description Summary'
+                    name='jobDescriptionSummary'
+                    value={this.state.jobDescriptionSummary}
+                    onChange={this.onChange}
+                  />
+                  {errors.jobDescriptionSummary && (
+                    <div className='invalid-feedback'>
+                      {errors.jobDescriptionSummary}
+                    </div>
                   )}
                 </div>
                 <div className='form-group'>

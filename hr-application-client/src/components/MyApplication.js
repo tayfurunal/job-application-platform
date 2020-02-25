@@ -55,7 +55,13 @@ class MyApplication extends Component {
                     <td>{listValue.job.jobTitle}</td>
                     <td>{listValue.name}</td>
                     <td>{listValue.email}</td>
-                    <td>{listValue.resumeUrl}</td>
+                    <td>
+                      <a
+                        href={`http://localhost:8080/downloadFile/${listValue.resumeUrl}`}
+                      >
+                        {listValue.resumeUrl}
+                      </a>
+                    </td>
                   </tr>
                 );
               })}
