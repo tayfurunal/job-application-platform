@@ -13,6 +13,7 @@ import Header from './components/Layout/Header';
 import Landing from './components/Layout/Landing';
 import Register from './components/UserManagement/Register';
 import Login from './components/UserManagement/Login';
+import Applications from './components/Applications';
 import MyApplication from './components/MyApplication';
 import { SET_CURRENT_USER } from './actions/types';
 import { logout } from './actions/securityActions';
@@ -70,6 +71,7 @@ function App() {
               path='/:username/applications'
               component={MyApplication}
             />
+            <SecureRoute exact path='/applications' component={Applications} />
           </Switch>
         </div>
       </Router>

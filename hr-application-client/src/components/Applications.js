@@ -55,7 +55,6 @@ class MyApplication extends Component {
                     <td>{listValue.job.jobTitle}</td>
                     <td>{listValue.name}</td>
                     <td>{listValue.email}</td>
-                    <td>{listValue.resumeUrl}</td>
                   </tr>
                 );
               })}

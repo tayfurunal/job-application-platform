@@ -43,7 +43,7 @@ export const deleteJob = id => async dispatch => {
       'Are you sure? This will delete the job and the data related to it'
     )
   ) {
-    await axios.delete(`/api/job/${id}`);
+    await axios.post(`/api/job/${id}`);
     dispatch({
       type: DELETE_JOB,
       payload: id

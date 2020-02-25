@@ -10,21 +10,21 @@ class ProjectItem extends Component {
   };
 
   render() {
-    const { project } = this.props;
+    const { job } = this.props;
     return (
       <div className='container'>
         <div className='card card-body bg-light mb-3'>
           <div className='row'>
             <div className='col-2'>
-              <span className='mx-auto'>{project.id}</span>
+              <span className='mx-auto'>{job.id}</span>
             </div>
             <div className='col-lg-6 col-md-4 col-8'>
-              <h3>{project.jobTitle}</h3>
-              <p>{project.jobDescription}</p>
+              <h3>{job.jobTitle}</h3>
+              <p>{job.jobDescription}</p>
             </div>
             <div className='col-md-4 d-none d-lg-block'>
               <ul className='list-group'>
-                <Link to={`/projectBoard/${project.id}`}>
+                <Link to={`/projectBoard/${job.id}`}>
                   <li className='list-group-item board'>
                     <i className='fa fa-flag-checkered pr-1'> Project Board </i>
                   </li>
@@ -32,7 +32,7 @@ class ProjectItem extends Component {
 
                 <li
                   className='list-group-item delete'
-                  onClick={() => this.onDeleteClick(project.id)}
+                  onClick={() => this.onDeleteClick(job.id)}
                 >
                   <i className='fa fa-minus-circle pr-1'> Delete Project</i>
                 </li>
