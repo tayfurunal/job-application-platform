@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addApplication } from '../actions/applicationActions';
+import axios from 'axios';
 
 class MakeApplication extends Component {
   constructor(props) {
@@ -16,6 +17,9 @@ class MakeApplication extends Component {
       thoughtsOnJob: '',
       resumeUrl: '',
       projectIdentifier: id,
+      file: null,
+      submit: false,
+      success: false,
       errors: {}
     };
   }
@@ -36,8 +40,14 @@ class MakeApplication extends Component {
 
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      errors: {}
     });
+  };
+
+  handleFile = e => {
+    let file = e.target.files[0];
+    this.setState({ file: file, resumeUrl: file.name, submit: true });
   };
 
   onSubmit = e => {
@@ -47,14 +57,25 @@ class MakeApplication extends Component {
       email: this.state.email,
       phone: this.state.phone,
       address: this.state.address,
-      thoughtsOnJob: this.state.thoughtsOnJob
+      thoughtsOnJob: this.state.thoughtsOnJob,
+      resumeUrl: this.state.resumeUrl
     };
+
+    let formData = new FormData();
+    formData.append('file', this.state.file);
+
+    axios
+      .post(`/uploadFile`, formData)
+      .then(res => {
+        console.log('success');
+      })
+      .catch(err => console.log('failure'));
 
     this.props
       .addApplication(this.state.projectIdentifier, newTask, this.props.history)
       .then(response => {
-        if (!this.state.errors) {
-          console.log('tayfur');
+        if (Object.keys(this.state.errors).length === 0) {
+          this.setState({ success: true });
         }
       });
   };
@@ -68,10 +89,21 @@ class MakeApplication extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-md-8 m-auto'>
-              <Link to={`/projectBoard/${id}`} className='btn btn-light'>
-                Back to Project Board
+              <Link
+                to={`/application/${id}`}
+                className='btn btn-primary'
+                style={{ marginBottom: 10 }}
+              >
+                Back to Details
               </Link>
-              <h4 className='display-4 text-center'>Add Project Task</h4>
+              <h4 className='display-4 text-center'>Make Application</h4>
+              {this.state.success ? (
+                <div class='alert alert-success' role='alert'>
+                  Your application is successful
+                </div>
+              ) : (
+                ''
+              )}
               <form onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
@@ -92,45 +124,83 @@ class MakeApplication extends Component {
                 </div>
                 <div className='form-group'>
                   <input
-                    className='form-control form-control-lg'
+                    className={
+                      errors.email
+                        ? 'form-control form-control-lg is-invalid'
+                        : 'form-control form-control-lg'
+                    }
                     type='text'
                     placeholder='Email'
                     name='email'
                     value={this.state.email}
                     onChange={this.onChange}
                   />
+                  {errors.email && (
+                    <div className='invalid-feedback'>{errors.email}</div>
+                  )}
                 </div>
                 <div className='form-group'>
                   <input
                     type='text'
                     placeholder='Phone'
-                    className='form-control form-control-lg'
+                    className={
+                      errors.phone
+                        ? 'form-control form-control-lg is-invalid'
+                        : 'form-control form-control-lg'
+                    }
                     name='phone'
                     value={this.state.phone}
                     onChange={this.onChange}
                   />
+                  {errors.phone && (
+                    <div className='invalid-feedback'>{errors.phone}</div>
+                  )}
                 </div>
                 <div className='form-group'>
                   <input
                     type='text'
                     placeholder='Address'
-                    className='form-control form-control-lg'
+                    className={
+                      errors.address
+                        ? 'form-control form-control-lg is-invalid'
+                        : 'form-control form-control-lg'
+                    }
                     name='address'
                     value={this.state.address}
                     onChange={this.onChange}
                   />
+                  {errors.address && (
+                    <div className='invalid-feedback'>{errors.address}</div>
+                  )}
                 </div>
                 <div className='form-group'>
                   <textarea
-                    className='form-control form-control-lg'
+                    className={
+                      errors.thoughtsOnJob
+                        ? 'form-control form-control-lg is-invalid'
+                        : 'form-control form-control-lg'
+                    }
                     placeholder='Thoughts On Job'
                     name='thoughtsOnJob'
                     value={this.state.thoughtsOnJob}
                     onChange={this.onChange}
                   ></textarea>
+                  {errors.thoughtsOnJob && (
+                    <div className='invalid-feedback'>
+                      {errors.thoughtsOnJob}
+                    </div>
+                  )}
                 </div>
                 <input
+                  type='file'
+                  placeholder='file'
+                  className='form-control form-control-lg'
+                  name='file'
+                  onChange={this.handleFile}
+                />
+                <input
                   type='submit'
+                  disabled={!this.state.submit}
                   className='btn btn-primary btn-block mt-4'
                 />
               </form>

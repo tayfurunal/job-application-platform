@@ -1,14 +1,9 @@
 import axios from 'axios';
 import { GET_ERRORS, GET_APPLICATIONS, GET_APPLICATION } from './types';
 
-export const addApplication = (
-  backlog_id,
-  project_task,
-  history
-) => async dispatch => {
+export const addApplication = (id, application, history) => async dispatch => {
   try {
-    await axios.post(`/api/application/${backlog_id}`, project_task);
-    history.push(`/projectBoard/${backlog_id}`);
+    await axios.post(`/api/application/${id}`, application);
     dispatch({
       type: GET_ERRORS,
       payload: {}
