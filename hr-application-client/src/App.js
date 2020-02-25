@@ -13,6 +13,7 @@ import Header from './components/Layout/Header';
 import Landing from './components/Layout/Landing';
 import Register from './components/UserManagement/Register';
 import Login from './components/UserManagement/Login';
+import MyApplication from './components/MyApplication';
 import { SET_CURRENT_USER } from './actions/types';
 import { logout } from './actions/securityActions';
 import SecureRoute from './securityUtils/secureRoutes';
@@ -63,6 +64,11 @@ function App() {
               exact
               path='/makeApplication/:id'
               component={MakeApplication}
+            />
+            <SecureRoute
+              exact
+              path='/:username/applications'
+              component={MyApplication}
             />
           </Switch>
         </div>

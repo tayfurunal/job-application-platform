@@ -44,7 +44,12 @@ class Header extends Component {
         <ul className='navbar-nav mr-auto'>
           <li className='nav-item'>
             <Link className='nav-link' to='/'>
-              Ana Sayfa
+              Jobs
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to={`/${user.sub}/applications`}>
+              My Applications
             </Link>
           </li>
         </ul>
