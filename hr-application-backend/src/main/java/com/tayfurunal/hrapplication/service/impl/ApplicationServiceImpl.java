@@ -45,4 +45,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         List<Application> applications = applicationRepository.findAllByUserUsername(username);
         return applications;
     }
+
+    @Override
+    public List<Application> getAllApplications() {
+        List<Application> applications = applicationRepository.findAll();
+        return applications;
+    }
 }

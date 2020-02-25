@@ -53,6 +53,13 @@ public class ApplicationController {
         return ResponseEntity.ok(applications);
     }
 
+    @GetMapping("/all")
+    @PreAuthorize("hasRole('HR')")
+    public ResponseEntity<?> getApplications(){
+        List<Application> applications = applicationService.getAllApplications();
+        return ResponseEntity.ok(applications);
+    }
+
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ApiError handleValidationException(MethodArgumentNotValidException exception, HttpServletRequest request) {
