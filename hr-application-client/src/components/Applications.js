@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class MyApplication extends Component {
@@ -25,10 +26,8 @@ class MyApplication extends Component {
     ) {
       this.props.history.push('/');
     } else {
-      this.props.getJobs();
+      this.getApplications();
     }
-
-    this.getApplications();
   }
 
   render() {
@@ -64,8 +63,16 @@ class MyApplication extends Component {
                       <td>{listValue.job.jobTitle}</td>
                       <td>{listValue.name}</td>
                       <td>{listValue.email}</td>
-                      <td>{listValue.resumeUrl}</td>
-                      <button className='btn btn-primary'>Go</button>
+                      <td>
+                        <a
+                          href={`http://localhost:8080/downloadFile/${listValue.resumeUrl}`}
+                        >
+                          {listValue.resumeUrl}
+                        </a>
+                      </td>
+                      <Link to={`/applicationDetails/${listValue.id}`}>
+                        <button className='btn btn-primary'>Go</button>
+                      </Link>
                     </tr>
                   </>
                 );
