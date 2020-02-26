@@ -34,7 +34,7 @@ class ProjectItem extends Component {
                   className='list-group-item delete'
                   onClick={() => this.onDeleteClick(job.id)}
                 >
-                  <i className='fa fa-minus-circle pr-1'> Delete Project</i>
+                  <i className='fa fa-minus-circle pr-1'> Delete Job</i>
                 </li>
               </ul>
             </div>
