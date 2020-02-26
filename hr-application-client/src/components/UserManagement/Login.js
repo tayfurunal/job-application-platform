@@ -57,6 +57,11 @@ class Login extends Component {
               <h1 className='display-4 text-center'>Log In</h1>
               <form onSubmit={this.onSubmit}>
                 <div className='form-group'>
+                  {errors.message && (
+                    <div class='alert alert-danger' role='alert'>
+                      The username or password is incorrect please try again.
+                    </div>
+                  )}
                   <input
                     type='text'
                     className={
@@ -64,7 +69,7 @@ class Login extends Component {
                         ? 'form-control form-control-lg is-invalid'
                         : 'form-control form-control-lg'
                     }
-                    placeholder='Email Address'
+                    placeholder='Username'
                     name='username'
                     value={this.state.username}
                     onChange={this.onChange}

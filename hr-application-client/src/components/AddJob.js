@@ -116,11 +116,20 @@ class AddJob extends Component {
                 <div className='form-group'>
                   <input
                     type='date'
-                    className='form-control form-control-lg'
+                    className={
+                      errors.lastApplication
+                        ? 'form-control form-control-lg is-invalid'
+                        : 'form-control form-control-lg'
+                    }
                     name='lastApplication'
                     value={this.state.lastApplication}
                     onChange={this.onChange}
                   />
+                  {errors.lastApplication && (
+                    <div className='invalid-feedback'>
+                      {errors.lastApplication}
+                    </div>
+                  )}
                 </div>
                 <input
                   type='submit'
