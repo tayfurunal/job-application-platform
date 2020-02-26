@@ -68,12 +68,11 @@ Create new user with role on Postman:
 
 ![image](https://i.imgur.com/w6pfR3i.png)
 
-
 ### Screenshots
 
 ![image](https://i.imgur.com/MDOHVNL.png)
 
-![image](https://i.imgur.com/XokACvp.png)
+![image](https://i.imgur.com/7LBTRqO.png)
 
 ![image](https://i.imgur.com/Pt9MezI.png)
 
