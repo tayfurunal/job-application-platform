@@ -24,8 +24,15 @@ class ApplicationDetails extends Component {
   };
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.getApplication(id);
+    if (
+      !this.props.security.validToken ||
+      !this.props.security.roles[0].includes('ROLE_HR')
+    ) {
+      this.props.history.push('/');
+    } else {
+      const { id } = this.props.match.params;
+      this.getApplication(id);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -65,11 +72,13 @@ class ApplicationDetails extends Component {
 
 ApplicationDetails.propTypes = {
   errors: PropTypes.object.isRequired,
-  job: PropTypes.object.isRequired
+  job: PropTypes.object.isRequired,
+  security: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  errors: state.errors
+  errors: state.errors,
+  security: state.security
 });
 
 export default connect(mapStateToProps, {})(ApplicationDetails);
