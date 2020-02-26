@@ -51,8 +51,8 @@ $ yarn start
 
 Human Resources
 ```sh
-username:hradmin
-password:hradmin
+username: hradmin
+password: hradmin
 ```
 
 Applicant
@@ -61,9 +61,16 @@ username: tayfur
 password: tayfur
 ```
 
+Create new user with role on Postman
+![image](https://i.imgur.com/w6pfR3i.png)
+
+
 ### Screenshots
 
 ![image](https://i.imgur.com/MDOHVNL.png)
+
 ![image](https://i.imgur.com/XokACvp.png)
+
 ![image](https://i.imgur.com/Pt9MezI.png)
+
 ![image](https://i.imgur.com/QZlB6Qu.png)
