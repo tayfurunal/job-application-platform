@@ -6,7 +6,7 @@ INSERT INTO users VALUES (1001, '2020-02-26 21:59:23.997', 'tayfur@tayfur.com', 
 
 INSERT INTO job_list VALUES (2000, '2020-02-26 22:04:56.109', false, 'Minimum 4 years work experience as a Software Application developer, Experience with Container images deploy & release management with Openshift', 'We are looking for Devops Engineer', 'Devops Engineer', '2021-01-05 03:02:00', 1);
 INSERT INTO job_list VALUES (2001, '2020-02-26 22:03:12.549', false, '4+ years hands on coding advanced experience in Java and Web technologies, Experience about microservice architectures', 'We are looking for Senior Java Developers', 'Java Developer', '2021-01-02 03:01:00', 0);
-INSERT INTO application VALUES (1, '2020-02-26 22:06:46.885', 'Bahçelievler/Istanbul', 'mtayfurunal@gmail.com', 'Tayfur Ünal', '5352370557', 'TayfurÜnal-CV.pdf', 'I think this is suitable for me.', 2000, 1001);
+INSERT INTO application VALUES (1000, '2020-02-26 22:06:46.885', 'Bahçelievler/Istanbul', 'mtayfurunal@gmail.com', 'Tayfur Ünal', '5352370557', 'TayfurÜnal-CV.pdf', 'I think this is suitable for me.', 2000, 1001);
 
 INSERT INTO user_role VALUES (1000, 1);
 INSERT INTO user_role VALUES (1000, 2);
