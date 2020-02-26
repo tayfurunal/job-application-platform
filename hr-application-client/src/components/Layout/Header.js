@@ -16,12 +16,12 @@ class Header extends Component {
     const userIsHR = (
       <div className='collapse navbar-collapse' id='mobile-nav'>
         <ul className='navbar-nav mr-auto'>
-          <li className='nav-item'>
+          <li className='nav-item active'>
             <Link className='nav-link' to='/managerPanel'>
               Manager Panel
             </Link>
           </li>
-          <li className='nav-item'>
+          <li className='nav-item active'>
             <Link className='nav-link' to='/applications'>
               Applications
             </Link>
@@ -48,11 +48,11 @@ class Header extends Component {
       <div className='collapse navbar-collapse' id='mobile-nav'>
         <ul className='navbar-nav mr-auto'>
           <li className='nav-item'>
-            <Link className='nav-link' to='/'>
+            <Link className='nav-link active' to='/'>
               Jobs
             </Link>
           </li>
-          <li className='nav-item'>
+          <li className='nav-item active'>
             <Link className='nav-link' to={`/${user.sub}/applications`}>
               My Applications
             </Link>
