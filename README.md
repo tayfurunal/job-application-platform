@@ -1,8 +1,11 @@
 # Job Application Platform
-Kanban Management Tool using Spring Framework(Spring Boot, Security, JPA) and React, Redux
+Job-Application-Platform using Spring Framework(Spring Boot, Security, JPA) and React, Redux
 
-* Authentication and Authorization with JSON Web Token.
+* Rol based(Applicant and Human Resources) Authentication and Authorization with JSON Web Token.
 * Create, and Delete and Job for only Human Resources user.
+* Apply job for Applicant user
+* File Upload an Download
+* Secured Routes an API's based on Client and Server side 
 
 ### Technologies
 
@@ -42,6 +45,21 @@ install client
 $ cd hr-application-client
 $ yarn
 $ yarn start
+```
+
+### Usage
+
+Human Resources
+```sh
+username:hradmin
+password:hradmin
+```
+
+
+Applicant
+```sh
+username: tayfur
+password: tayfur
 ```
 
 
