@@ -55,17 +55,15 @@ username:hradmin
 password:hradmin
 ```
 
-
 Applicant
 ```sh
 username: tayfur
 password: tayfur
 ```
 
-
-
 ### Screenshots
 
 ![image](https://i.imgur.com/MDOHVNL.png)
-
----
+![image](https://i.imgur.com/XokACvp.png)
+![image](https://i.imgur.com/Pt9MezI.png)
+![image](https://i.imgur.com/QZlB6Qu.png)
