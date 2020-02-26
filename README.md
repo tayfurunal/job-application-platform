@@ -63,8 +63,8 @@ password: tayfur
 
 Create new user with role on Postman:
 
-for HR user => role:["HR"]
-for APPLICANT user => role:["APPLICANT"]
+*for HR user => role:["HR"]
+*for APPLICANT user => role:["APPLICANT"]
 
 ![image](https://i.imgur.com/w6pfR3i.png)
 
