@@ -60,6 +60,13 @@ public class ApplicationController {
         return ResponseEntity.ok(applications);
     }
 
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('HR')")
+    public ResponseEntity<?> getApplicationById(@PathVariable(value = "id",required = true) Long id){
+        Application application = applicationService.getApplicationById(id);
+        return ResponseEntity.ok(application);
+    }
+
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ApiError handleValidationException(MethodArgumentNotValidException exception, HttpServletRequest request) {
