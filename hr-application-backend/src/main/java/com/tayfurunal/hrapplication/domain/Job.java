@@ -44,7 +44,6 @@ public class Job extends BaseEntity {
     private Boolean isClosed = false;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
-    @FutureOrPresent(message = "Last Application Date must be in the future")
     @NotNull(message = "Date cannot be blank")
     private Date lastApplication;
 }
