@@ -21,6 +21,7 @@ import SecureRoute from './securityUtils/secureRoutes';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ApplicationDetails from './components/ApplicationDetails';
 
 const jwtToken = localStorage.jwtToken;
 const roles = [];
@@ -70,6 +71,11 @@ function App() {
               exact
               path='/:username/applications'
               component={MyApplication}
+            />
+            <SecureRoute
+              exact
+              path='/applicationDetails/:id'
+              component={ApplicationDetails}
             />
             <SecureRoute exact path='/applications' component={Applications} />
           </Switch>
