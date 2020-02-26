@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,9 +41,10 @@ public class Job extends BaseEntity {
 
     private Integer numberOfApplication = 0;
 
-    private Integer isClosed = 0;
+    private Boolean isClosed = false;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
-    @FutureOrPresent(message = "Last Application Date must be in the future")   
+    @FutureOrPresent(message = "Last Application Date must be in the future")
+    @NotNull(message = "Date cannot be blank")
     private Date lastApplication;
 }

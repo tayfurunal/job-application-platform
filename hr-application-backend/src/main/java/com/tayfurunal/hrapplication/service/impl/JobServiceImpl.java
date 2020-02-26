@@ -35,7 +35,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<Job> getJobs() {
-        List<Job> jobs = jobRepository.findAllByIsClosedEqualsOrderByIdAsc(0);
+        List<Job> jobs = jobRepository.findAllByIsClosedEqualsOrderByIdAsc(false);
         return jobs;
     }
 
@@ -43,7 +43,7 @@ public class JobServiceImpl implements JobService {
     public Job deleteJobById(Long id) {
         Job job = jobRepository.getById(id);
         if (job != null) {
-           job.setIsClosed(1);
+           job.setIsClosed(true);
         } else {
             throw new IllegalArgumentException("Job not found!");
         }

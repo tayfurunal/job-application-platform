@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
     List<Application> findAllByUserUsername(String username);
+
+    Application getById(Long id);
 }

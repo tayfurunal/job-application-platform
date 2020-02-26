@@ -10,5 +10,5 @@ import java.util.List;
 public interface JobRepository extends JpaRepository<Job, Long> {
     Job getById(Long id);
     List<Job> findAllByOrderByIdAsc();
-    List<Job> findAllByIsClosedEqualsOrderByIdAsc(Integer isClosed);
+    List<Job> findAllByIsClosedEqualsOrderByIdAsc(Boolean isClosed);
 }

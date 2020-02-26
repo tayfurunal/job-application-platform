@@ -51,4 +51,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         List<Application> applications = applicationRepository.findAll();
         return applications;
     }
+
+    @Override
+    public Application getApplicationById(Long id) {
+        Application application = applicationRepository.getById(id);
+        return application;
+    }
 }
