@@ -66,6 +66,6 @@ password: tayfur
 
 ### Screenshots
 
-[Image](https://i.imgur.com/MDOHVNL.png)
+[image](https://i.imgur.com/MDOHVNL.png)
 
 ---
