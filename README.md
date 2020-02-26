@@ -61,7 +61,8 @@ username: tayfur
 password: tayfur
 ```
 
-Create new user with role on Postman
+Create new user with role on Postman:
+
 ![image](https://i.imgur.com/w6pfR3i.png)
 
 
