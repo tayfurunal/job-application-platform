@@ -27,6 +27,10 @@ $ mvn clean install or import IDE(Intellij IDEA etc.)
 $ mvn spring-boot:run
 ```
 
+Database Settings:
+
+Default is H2 and you don't need configuration
+
 if using Postgresql, Settings:
 
 ```sh
