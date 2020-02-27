@@ -9,5 +9,4 @@ INSERT INTO job_list VALUES (2001, '2020-02-26 22:03:12.549', false, '4+ years h
 INSERT INTO application VALUES (1000, '2020-02-26 22:06:46.885', 'Bahçelievler/Istanbul', 'mtayfurunal@gmail.com', 'Tayfur Ünal', '5352370557', 'TayfurÜnal-CV.pdf', 'I think this is suitable for me.', 2000, 1001);
 
 INSERT INTO user_role VALUES (1000, 1);
-INSERT INTO user_role VALUES (1000, 2);
 INSERT INTO user_role VALUES (1001, 2);
