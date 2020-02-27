@@ -70,7 +70,7 @@ Create new user with role on Postman:
 - HR user => role:["HR"]
 - APPLICANT user => role:["APPLICANT"]
 
-![image](https://i.imgur.com/w6pfR3i.png)
+![image](https://i.imgur.com/DD7tEsz.png)
 
 ### Screenshots
 
