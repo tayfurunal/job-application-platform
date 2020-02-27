@@ -5,7 +5,7 @@ Job-Application-Platform using Spring Framework(Spring Boot, Security, JPA) and 
 * Create, and Delete and Job for only Human Resources user.
 * Apply job for Applicant user
 * File Upload an Download
-* Secured Routes an API's based on Client and Server side 
+* Secured routes both by client and server
 
 ### Technologies
 
