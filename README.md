@@ -27,7 +27,7 @@ $ mvn clean install or import IDE(Intellij IDEA etc.)
 $ mvn spring-boot:run
 ```
 
-if using Posgtresql, Settings:
+if using Postgresql, Settings:
 
 ```sh
 hr-application-backend > src > main > resources > application.properties
