@@ -13,7 +13,7 @@ The technologies used to develop this web app were diverse, the main ones being:
 
 - Spring Framework(Spring Boot, Spring Security, Spring Data JPA)
 - React
-- Postgresql
+- SQL(Postgresql and H2)
 
 ### Installation
  
@@ -27,10 +27,14 @@ $ mvn clean install or import IDE(Intellij IDEA etc.)
 $ mvn spring-boot:run
 ```
 
-Database Settings:
+if using Posgtresql, Settings:
 
 ```sh
 hr-application-backend > src > main > resources > application.properties
+
+add the line
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 and Fill in the blanks
 
